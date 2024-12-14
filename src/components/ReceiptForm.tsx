@@ -10,7 +10,7 @@ interface ReceiptFormProps {
 
 function ReceiptForm({ handle } : ReceiptFormProps) {
     const [form] = Form.useForm();
-    const sigPadRef = React.useRef(null);
+    const sigPadRef = React.useRef<SignatureCanvas>(null);
 
     const handleSignature = () => {
         const signature = sigPadRef?.current?.getTrimmedCanvas().toDataURL();

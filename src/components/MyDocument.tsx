@@ -1,7 +1,4 @@
-// MyDocument.tsx
-import React from 'react';
 import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/renderer';
-// import IReceiptData from '../types/Receipt';
 import logo from '../assets/react.png';
 import signature from '../assets/signature.jpeg';
 

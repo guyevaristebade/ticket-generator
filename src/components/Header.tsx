@@ -1,4 +1,3 @@
-import React from 'react'
 import { Image } from 'antd'
 import  logo  from  '../assets/react.svg'
 function Header() {
