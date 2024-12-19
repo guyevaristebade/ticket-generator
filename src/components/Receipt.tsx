@@ -50,7 +50,7 @@ const Receipt: React.FC<ReceiptProps> = ({ receiptData }) => (
         <Text style={styles.label}>
           Adresse : 2 Rue Saint-Laurent, 77167 Bagneaux-sur-Loing
         </Text>
-        <Text style={styles.label}>Montant : {receiptData?.montant}</Text>
+        <Text style={styles.label}>Montant : {receiptData?.montant} €</Text>
         <Text style={styles.label}>Mode de paiement : {receiptData?.moyen_paiement}</Text>
       </View>
 

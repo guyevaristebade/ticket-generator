@@ -32,7 +32,7 @@ function App() {
           <PDFDownloadLink
             document={<Receipt receiptData={receiptData} />}
             fileName={`reçu-Guy}-Bade.pdf`}
-            className="bg-blue-300 text-white p-3 rounded text-center"
+            className="bg-blue-500 text-white p-3 rounded text-center"
             onLoad={handleDocumentLoad}
         >
           Télécharger
