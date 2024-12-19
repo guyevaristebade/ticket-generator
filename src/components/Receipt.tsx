@@ -46,7 +46,7 @@ const Receipt: React.FC<ReceiptProps> = ({ receiptData }) => (
 
       {/* Informations principales */}
       <View style={styles.contentBox}>
-        <Text style={styles.label}>Nom et prénom : {receiptData?.nom && receiptData?.prenom}</Text>
+        <Text style={styles.label}>Nom et prénom : {`${receiptData?.nom} ${receiptData?.prenom}`}</Text>
         <Text style={styles.label}>
           Adresse : 2 Rue Saint-Laurent, 77167 Bagneaux-sur-Loing
         </Text>
