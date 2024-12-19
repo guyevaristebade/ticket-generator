@@ -1,16 +1,14 @@
-// import { Form } from 'antd';
-import { useEffect, useCallback, useState } from 'react';
-import './App.css';
+import { useCallback, useState } from 'react';
 import Header from "./components/Header";
 import ReceiptForm from "./components/ReceiptForm";
 import IReceiptData from './types/Receipt';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import MyDocument from './components/MyDocument';
+import Receipt from './components/Receipt';
 
 function App() {
 
-  const [receiptData, setReceiptData] = useState<{} |null>(null)
-  const [isButtonVisible, setIsButtonVisible] = useState(false); // Nouvel état pour gérer la visibilité
+  const [receiptData, setReceiptData] = useState<IReceiptData | null>(null)
+  const [isButtonVisible, setIsButtonVisible] = useState(false); // Nouvel état pour gérer la visibilité des boutons de téléchargement et de réinitialisation
   const transfertFieldsValue = useCallback((values : IReceiptData) => {
     setReceiptData(values);
     setIsButtonVisible(true);
@@ -19,12 +17,6 @@ function App() {
   const handleDocumentLoad = () => {
     setIsButtonVisible(false); // Rend le bouton invisible après chargement
   };
-
-  useEffect(() => {
-    console.log(receiptData, "je suis dans app");
-    console.log(isButtonVisible, "je suis le boolean dans app");
-  }, [receiptData, isButtonVisible])
-
 
   function handleDownloadClick(): void {
     setIsButtonVisible(false);
@@ -38,20 +30,18 @@ function App() {
       {receiptData && isButtonVisible && (
         <div className="flex justify-center gap-4 items-center py-10">
           <PDFDownloadLink
-            document={<MyDocument />}
+            document={<Receipt receiptData={receiptData} />}
             fileName={`reçu-Guy}-Bade.pdf`}
-            className="bg-green-500 text-white p-3 rounded text-center"
+            className="bg-blue-300 text-white p-3 rounded text-center"
             onLoad={handleDocumentLoad}
         >
           Télécharger
           </PDFDownloadLink>
           
-          <button  onClick={handleDownloadClick} className="bg-blue-500 text-white p-3 rounded text-center">Reset</button>
+          <button  onClick={handleDownloadClick} className="bg-red-500 text-white p-3 rounded text-center">Réinitialiser</button>
         </div>
         )
       }
-
-        
     </div>
   );
 }

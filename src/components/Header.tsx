@@ -1,5 +1,5 @@
 import { Image } from 'antd'
-import  logo  from  '../assets/react.svg'
+import  logo  from  '../assets/logo_sfk.jpg'
 function Header() {
     return (
     <header className='flex flex-col items-center mb-10'>

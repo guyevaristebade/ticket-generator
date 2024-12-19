@@ -1,9 +1,10 @@
 import React from 'react';
 import SignatureCanvas from "react-signature-canvas";
-
-const { Option } = Select;
 import { Button, DatePicker, Form, Input, Select } from 'antd';
 import IReceiptData from '../types/Receipt';
+
+const { Option } = Select;
+
 interface ReceiptFormProps {
     handle : (value : IReceiptData) => void
 }
@@ -15,7 +16,6 @@ function ReceiptForm({ handle } : ReceiptFormProps) {
     const handleSignature = () => {
         const signature = sigPadRef?.current?.getTrimmedCanvas().toDataURL();
         form.setFieldValue('signature', signature);
-
         form.validateFields().then((values) => {
             handle(values);
             form.resetFields();
@@ -32,7 +32,6 @@ function ReceiptForm({ handle } : ReceiptFormProps) {
                 layout='vertical'
             >
                 <Form.Item
-                
                     name="nom"
                     required
                     label="Nom"
@@ -78,9 +77,10 @@ function ReceiptForm({ handle } : ReceiptFormProps) {
                     label="Moyen de paiement"
                     rules={[{ required: true, message: 'Veuillez choisir le moyen de paiement' }]}
                 >
-                    <Select placeholder="CB" size='large'>
-                        <Option value="CB">Carte Bancaire</Option>
+                    <Select placeholder="Chèque" size='large'>
+                        <Option value="cheque">Chèque</Option>
                         <Option value="espece">Espèce</Option>
+                        <Option value="Virement">Virement</Option>
                     </Select>
                 </Form.Item>
 
@@ -93,9 +93,8 @@ function ReceiptForm({ handle } : ReceiptFormProps) {
                 </Form.Item>
                 <Form.Item className='col-span-2'>
                     <Button htmlType='submit' size='large' className='bg-[midnightblue] text-white border-none w-full p-6 font-bold'
-                    // onClick={handleSignature}
                     >
-                        Téléchargez le Reçu
+                        Générer le Reçu
                     </Button>
                 </Form.Item>
             </Form>
